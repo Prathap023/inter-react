@@ -1,7 +1,14 @@
 pipeline{
     agent any
+    triggers {
+        cron('H/2 * * * *')
+    }
     stages{
         stage('Checkout'){
+            stage('Clone') {
+            steps {
+                git branch: 'master', url: 'https://github.com/Prathap023/inter-react.git'
+            }
             steps{
                 sh 'echo "Checking out the code..."'
                 checkout scm

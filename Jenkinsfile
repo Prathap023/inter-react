@@ -1,24 +1,25 @@
-pipeline{
+pipeline {
     agent any
-    triggers {
-        cron('H/2 * * * *')
+    
+    tools {
+        nodejs 'node' 
     }
-    stages{
-        stage('Checkout'){
+
+    stages {
+        stage('Checkout') {
             steps {
-                git branch: 'master', url: 'https://github.com/Prathap023/inter-react.git'
+                git 'https://github.com/Prathap023/inter-react.git'
             }
         }
-        stage('Build'){
-            steps{
-                sh 'echo "Building the application..."'
+        stage('Build') {
+            steps {
+                echo 'Building the application...'
                 sh 'npm install'
             }
         }
-        stage('Run'){
-            steps{
-                sh 'echo "Running the application..."'
-                sh 'npm start'
+        stage('Run') {
+            steps {
+                echo 'Running...'
             }
         }
     }

@@ -3,20 +3,20 @@ pipeline{
     stages{
         stage('Checkout'){
             steps{
-                bat 'echo "Checking out the code..."'
+                sh 'echo "Checking out the code..."'
                 checkout scm
             }
         }
         stage('Build'){
             steps{
-                bat 'echo "Building the application..."'
-                bat 'npm install'
+                sh 'echo "Building the application..."'
+                sh 'npm install'
             }
         }
         stage('Run'){
             steps{
-                bat 'echo "Running the application..."'
-                bat 'npm start'
+                sh 'echo "Running the application..."'
+                sh 'npm start'
             }
         }
     }

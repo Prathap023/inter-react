@@ -2,7 +2,7 @@ pipeline {
     agent any
     
     tools {
-        git 'git' 
+        react 'react'
     }
 
     stages {

@@ -5,10 +5,6 @@ pipeline {
         cron('H/2 * * * *')
     }
     
-    tools {
-        nodejs 'node'
-    }
-    
     stages {
         stage('Checkout') {
             steps {
@@ -18,16 +14,23 @@ pipeline {
         
         stage('Build') {
             steps {
-                echo "Building the application..."
                 sh 'npm install'
             }
         }
         
         stage('Run') {
             steps {
-                echo "Running the application..."
-                sh 'npm start &' 
+                sh 'npm start &'
             }
+        }
+    }
+    
+    post {
+        success {
+            echo 'Pipeline executed successfully!'
+        }
+        failure {
+            echo 'Pipeline failed. Please check the logs above.'
         }
     }
 }
